@@ -16,10 +16,7 @@ public interface MahasiswaRepository extends JpaRepository<MahasiswaModel, Strin
 	@Query("select m from MahasiswaModel m where kd_mhs = ?1")
 	MahasiswaModel cariKode(String kd_mhs);
 	
-//	@Query("select m from MahasiswaModel m order by m.usia")
-//	List<MahasiswaModel> cariTertinggi(int limit);
-	
-	//Optional<MahasiswaModel> findTop2ByOrderBySeatNumberAsc();
+	List<MahasiswaModel>searchAlamat();
 	
 	//varian condition
 	@Query("SELECT D FROM MahasiswaModel D WHERE D.usia =?1")
