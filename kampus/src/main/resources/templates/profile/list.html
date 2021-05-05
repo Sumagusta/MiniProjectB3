@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>list</title>
+</head>
+<body>
+		<tr th:each="item:${mahasiswaProfileModelList}">
+			<td><a th:text="${item.idProfil}"></a></td>
+			<td><a th:text="${item.mahasiswaModel.nm_mhs}"></a></td>
+			<td><a th:text="${item.email}"></a></td>
+			<td><a th:text="${item.noHP}"></a></td>
+			
+			<td><button id="btn-edit" type="button" class="btn btn-success" th:value="${item.idProfil}">Update</button></td>
+			<td><button id="btn-edit" type="button" class="btn btn-danger" th:value="${item.idProfil}"><i class="bi bi-x-octagon-fill">Delete</i></button></td>
+		</tr>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Cari Usia Mahasiswa</h1>
+
+	<form action="proses_cari_usia" method="post">
+		<table>
+			<tr>
+				<td>Operator :</td>
+				<td><select name="katakunci_operator">
+						<option value="=">=</option>
+						<option value=">">></option>
+						<option value="<"><</option>
+						<option value=">=">>=</option>
+						<option value="<="><=</option>
+						<option value="!=">!=</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Awalan Nama :</td>
+				<td><select name="katakunci_operator_nama">
+						<option value="a">a</option>
+						<option value="b">b</option>
+						<option value="c">c</option>
+						<option value="d">d</option>
+						<option value="e">e</option>
+						<option value="f">f</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="katakunci_usia" placeholder="usia">
+					</td>
+					<td><button type="submit">Cari</button></td>
+			</tr>
+
+		</table>
+	</form>
+	<br />
+	<table border="1">
+		<tr>
+			<td>Nama Mahasiswa</td>
+			<td>Usia Mahasiswa</td>
+		</tr>
+		<tr th:each="mahasiswaModel:${mahasiswaModelList}">
+			<td><a th:text="${mahasiswaModel.nm_mhs}"></a></td>
+			<td><a th:text="${mahasiswaModel.usia}"></a></td>
+		</tr>
+	</table>
+</body>
+</html>

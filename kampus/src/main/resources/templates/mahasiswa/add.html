@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Form Add</title>
+</head>
+<body>
+	<form id="form-add-mahasiswa" th:action="@{/mahasiswa/create}"
+		method="post">
+		<table>
+			<tr>
+				<td>Kode Mahasiswa</td>
+				<td><input type="text" placeholder="Kode Mahasiswa"
+					name="kodeMahasiswa" /></td>
+			</tr>
+			<tr>
+				<td>Nama Mahasiswa</td>
+				<td><input type="text" placeholder="Nama Mahasiswa"
+					name="namaMahasiswa" /></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td><input type="radio" name="jk" value="pria" />Pria <input
+					type="radio" name="jk" value="wanita" />Wanita</td>
+			</tr>
+			<tr>
+				<td>Alamat</td>
+				<td><textarea rows="3" cols="21" placeholder="Masukkan Alamat"
+						name="alamat"></textarea></td>
+			</tr>
+			<tr>
+				<td>Jurusan</td>
+				<td><select name="jurusan">
+						<optgroup label="Pilih jurusan">
+							<option th:value="belum"></option>
+							<option th:each="jurusanModel:${jurusanModelList}"
+								th:value="${jurusanModel.kodeJurusan}"
+								th:text="${jurusanModel.namaJurusan}"></option>
+						</optgroup>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td><select name="status">
+						<optgroup label="Pilih status">
+							<option value="tidak ada"></option>
+							<option value="Menikah">Menikah</option>
+							<option value="Belum Kawin">Belum Kawin</option>
+							<option></option>
+						</optgroup>
+				</select></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" />&nbsp;&nbsp;<input type="reset" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Mahasiswa</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div>
+		<a th:href="@{/mahasiswa/add}" ><button type="button">Add Data</button></a>
+	</div>
+	<br />
+	<div style="padding: 28px;">
+		<button id="btn-hide" style="background-color: orange; color: white;">Hide</button>
+	</div>
+	<div id="id-tr" style="display: block">
+		<table border="1">
+			<thead>
+				<tr>
+					<td>KODE</td>
+					<td>MAHASISWA</td>
+					<td>GENDER</td>
+					<td>ALAMAT</td>
+					<td>STATUS</td>
+				</tr>
+			</thead>
+			<tbody id="list-mahasiswa">
+
+			</tbody>
+		</table>
+		<div class="modal" id="modal-edit-mahasiswa" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Edit Mahasiswa</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>Modal body text goes here.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	autoRefresh();
+
+	function autoRefresh() {
+		$.ajax({
+			url : "/kodehive/mahasiswa/list",
+			type : "get",
+			dataType : "html",
+			success : function(result) {
+				$("#list-mahasiswa").html(result);
+			}
+		});
+	}
+
+	
+	$("#list-mahasiswa").on("click", "#btn-edit", function(){
+		var kd_mhs = $(this).val();
+		$.ajax({
+			url : "/kodehive/mahasiswa/edit",
+			type : "get",
+			dataType : "html",
+			data : {kd_mhs},
+			success : function(result) {
+				$('#modal-edit-mahasiswa').modal('show');
+				$('#modal-edit-mahasiswa').find('.modal-body').html(result);
+				
+			}
+		});
+	});
+
+	function setHide() {
+		$('#btn-hide').on('click', function() {
+
+			if ($("#id-tr").css("display") == "block") {
+				$("#id-tr").css("display", "none");
+
+			} else {
+				$("#id-tr").css("display", "block");
+			}
+		});
+	}
+
+	$(document).ready(function() {
+		setHide();
+	});
+</script>
+
+
+</html>

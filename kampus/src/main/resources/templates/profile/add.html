@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Form Add</title>
+</head>
+<body>
+	<form id="form-add-mahasiswa" th:action="@{/mahasiswa/profil/create}"
+		method="post">
+		<table>
+			<tr>
+				<td>ID Profil</td>
+				<td><input type="text" placeholder="ID Profil"
+					name="idProfil" /></td>
+			</tr>
+			<tr>
+				<td>Nama Mahasiswa</td>
+				<td><select name="namaMahasiswa">
+						<optgroup label="Pilih mahasiswa">
+						<option value=""></option>
+							<option th:each="mahasiswaModel:${mahasiswaModelList}"
+								th:value="${mahasiswaModel.kd_mhs}"
+								th:text="${mahasiswaModel.nm_mhs}"></option>
+						</optgroup>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="email" placeholder="Email kamu"
+					name="email" /></td>
+			</tr>
+			<tr>
+				<td>No HP</td>
+				<td><input type="number" placeholder="Nomor HP mu"
+					name="noHP" /></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td><input type="submit" />&nbsp;&nbsp;<input type="reset" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

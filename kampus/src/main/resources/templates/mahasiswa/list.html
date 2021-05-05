@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>list</title>
+</head>
+<body>
+		<tr th:each="item:${mahasiswaModelList}">
+			<td><a th:text="${item.kd_mhs}"></a></td>
+			<td><a th:text="${item.nm_mhs}"></a></td>
+			<td><a th:text="${item.jk}"></a></td>
+			<td><a th:text="${item.alamat}"></a></td>
+			<td><a th:text="${item.status}"></a></td>
+			
+			<td><button id="btn-edit" type="button" class="btn btn-success" th:value="${item.kd_mhs}">Update</button></td>
+			<td><button id="btn-edit" type="button" class="btn btn-danger" th:value="${item.kd_mhs}"><i class="bi bi-x-octagon-fill">Delete</i></button></td>
+		</tr>
+</body>
+
+</html>
